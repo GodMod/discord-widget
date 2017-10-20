@@ -1,27 +1,33 @@
 var discordWidget = discordWidget || (function(){
   var _params = {};
-  var version = '1.1';
+  var version = '1.2';
 
   return {
     init : function(Params) {
       Params.serverId = typeof Params.serverId !== 'undefined' ? Params.serverId : false;
       Params.title = typeof Params.title !== 'undefined' ? Params.title : false;
       Params.join = typeof Params.join !== 'undefined' ? Params.join : true;
+      Params.joinText = typeof Params.joinText !== 'undefined' ? Params.joinText : 'Join Server';
       Params.alphabetical = typeof Params.alphabetical !== 'undefined' ? Params.alphabetical : false;
       Params.theme = typeof Params.theme !== 'undefined' ? Params.theme : 'light';
       Params.hideChannels = typeof Params.hideChannels !== 'undefined' ? Params.hideChannels : false;
       Params.showAllUsers = typeof Params.showAllUsers !== 'undefined' ? Params.showAllUsers : false;
       Params.allUsersDefaultState = typeof Params.allUsersDefaultState !== 'undefined' ? Params.allUsersDefaultState : true;
       Params.showNick = typeof Params.showNick !== 'undefined' ? Params.showNick : true;
+      Params.userName = typeof Params.userName !== 'undefined' ? '?username=' + Params.userName : '';
+      Params.useCDN = typeof Params.useCDN !== 'undefined' ? Params.useCDN : true;
       _params.serverId = Params.serverId;
       _params.title = Params.title;
       _params.join = Params.join;
+      _params.joinText = Params.joinText;
       _params.alphabetical = Params.alphabetical;
       _params.theme = Params.theme;
       _params.hideChannels = Params.hideChannels;
       _params.showAllUsers = Params.showAllUsers;
       _params.allUsersDefaultState = Params.allUsersDefaultState;
       _params.showNick = Params.showNick;
+      _params.userName = Params.userName;
+      _params.useCDN = Params.useCDN;
     },
     render : function() {
       if (window.jQuery) {
@@ -51,7 +57,8 @@ var discordWidget = discordWidget || (function(){
           default:
           themeFile = 'light.min.css';
         }
-        $('head').append('<link rel="stylesheet" href="//cdn.jsdelivr.net/discord-widget/' + version + '/' + themeFile + '" type="text/css" />');
+        var cdnPrefix = _params.useCDN ? '//cdn.jsdelivr.net/discord-widget/' + version + '/' : './discord-widget/';
+        $('head').append('<link rel="stylesheet" href="' + cdnPrefix + themeFile + '" type="text/css" />');
 
         var url = 'https://discordapp.com/api/servers/' + _params.serverId + '/embed.json';
 
@@ -219,7 +226,7 @@ var discordWidget = discordWidget || (function(){
 
           var discordJoin = '';
           if (d.instant_invite != 'null')
-          discordJoin = '<a href="' + d.instant_invite + '" target="_blank">Join Server</a>';
+          discordJoin = '<a href="' + d.instant_invite + _params.userName + '" target="_blank">' + _params.joinText + '</a>';
 
           treeElement.innerHTML = formatted;
           usersElement.innerHTML = 'Users Online: ' + d.members.length;
