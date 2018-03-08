@@ -39,7 +39,7 @@
     <li><a href="#tab2">iframe</a></li>
   </ul>
   <div id="tab1">
-    <pre><code class="html">&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.jsdelivr.net/discord-widget/latest/discord-widget.min.js&quot;&gt;&lt;/script&gt;<br/>&lt;script type=&quot;text/javascript&quot;&gt;<br/>discordWidget.init({<br/>  serverId: '51143782082543616',<br/>  title: 'Discord Widget Title',<br/>  join: true,<br/>  alphabetical: false,<br/>  theme: 'light',<br/>  hideChannels: ['Channel Name 1', 'Channel Name 2'],<br/>  showAllUsers: true,<br/>  allUsersDefaultState: true,<br/>  showNick: false<br/>});<br/>discordWidget.render();<br/>&lt;/script&gt;<br/><br/>&lt;div class=&quot;discord-widget&quot;&gt;&lt;/div&gt;</code></pre>
+    <pre><code class="html">&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.jsdelivr.net/discord-widget/latest/discord-widget.min.js&quot;&gt;&lt;/script&gt;<br/>&lt;script type=&quot;text/javascript&quot;&gt;<br/>discordWidget.init({<br/>  serverId: '51143782082543616',<br/>  title: 'Discord Widget Title',<br/>  join: true,<br/>  joinText: 'Join Server',<br/>  alphabetical: false,<br/>  theme: 'light',<br/>  hideChannels: ['Channel Name 1', 'Channel Name 2'],<br/>  showAllUsers: true,<br/>  allUsersDefaultState: true,<br/>  showNick: false,<br/>  userName: '',<br/>  useCDN: true<br/>});<br/>discordWidget.render();<br/>&lt;/script&gt;<br/><br/>&lt;div class=&quot;discord-widget&quot;&gt;&lt;/div&gt;</code></pre>
   </div>
   <div id="tab2">
     <p class="iframe-form-info">
@@ -140,12 +140,15 @@
     <tr><td>serverId<br/><strong>[String]</strong></td><td>Paste your Server ID from the Widget section of your Server Settings here.</td><td>false</td></tr>
     <tr><td>title<br/><strong>[String]</strong></td><td>A header will be added to the widget, containing the text supplied.</td><td>false</td></tr>
     <tr><td>join<br/><strong>[Boolean]</strong></td><td>Determines whether to show the Join Server button within the widget.</td><td>true</td></tr>
+    <tr><td>joinText<br/><strong>[String]</strong></td><td>Sets the join button text.</td><td>'Join Server'</td></tr>
     <tr><td>alphabetical<br/><strong>[Boolean]</strong></td><td>Determines whether the channel list will display in alphabetical order or not.</td><td>false</td></tr>
     <tr><td>theme<br/><strong>[String ('light', 'dark', 'none')]</strong></td><td>Pick your poison!<br/><br/>'none' removes <strong>all styling</strong>, including margins and padding around the widget.</td><td>light</td></tr>
     <tr><td>hideChannels<br/><strong>[String Array]</strong>  -or- <strong>[Boolean]</strong></td><td>Hide channels. If the channel name contains the string provided, it will be hidden. If set to <strong>true</strong>, no channels will be displayed.</td><td>false</td></tr>
     <tr><td>showAllUsers<br/><strong>[Boolean]</strong></td><td>Show all online users, even if they are not in a voice channel.</td><td>false</td></tr>
     <tr><td>allUsersDefaultState<br/><strong>[Boolean]</strong></td><td>Sets whether the Online Users section is expanded or not by default.</td><td>true</td></tr>
     <tr><td>showNick<br/><strong>[Boolean]</strong></td><td>Sets whether the the users' server nick name shows or not.</td><td>false</td></tr>
+    <tr><td>userName<br/><strong>[String]</strong></td><td>Sets the default username when joining the server (passes the `username` URL parameter).</td><td>''</td></tr>
+    <tr><td>useCDN<br/><strong>[Boolean]</strong></td><td>Sets whether or not to use the jsdelivr CDN. Set to false if using your own local css theme.</td><td>true</td></tr>
   </table>
   <h2>Preview</h2>
   <div class="discord-preview">
@@ -155,12 +158,15 @@ discordWidget.init({
   serverId: '257007793893015553',
   title: 'Discord Widget Title',
   join: true,
+  joinText: 'Join Server',
   alphabetical: false,
   theme: 'light',
   hideChannels: ['Channel Name 1', 'Channel Name 2'],
   showAllUsers: true,
   allUsersDefaultState: true,
-  showNick: false
+  showNick: false,
+  userName: '',
+  useCDN: true
 });
 discordWidget.render();
 </script>

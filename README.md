@@ -5,12 +5,16 @@
         discordWidget.init({
             serverId: '51143782082543616',
             title: 'Discord Widget Title',
-            join: false,
+            join: true,
+            joinText: 'Join Server',
             alphabetical: false,
-            theme: 'dark',
+            theme: 'light',
             hideChannels: ['Channel Name 1', 'Channel Name 2'],
             showAllUsers: true,
-            allUsersDefaultState: true
+            allUsersDefaultState: true,
+            showNick: false,
+            userName: '',
+            useCDN: true
         });
         discordWidget.render();
     </script>
@@ -24,6 +28,13 @@ For more details, go [here](http://discord.deliriousdrunkards.com/).
 ![](http://i.imgur.com/6zRoK2V.png)
 
 ## Changelog
+#### 1.2
+##### New Features
+* Added option to set join button text. (joinText: 'Join Server')
+* Added option to set default username. (userName: '')
+* Added option to choose if CDN is used or not (e.g. for css themes). (useCDN: true)
+
+
 #### 1.1
 ##### New Features
 * Added option to hide all channels and only show online users. (hideChannels: true)
